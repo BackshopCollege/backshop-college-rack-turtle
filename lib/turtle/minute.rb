@@ -12,7 +12,7 @@ module Turtle
     def initialize(app, options)
       super
       @max_window_request   = options[:maximum] || 10
-      @window_length        = 60 #60 seconds
+      @window_length        = options[:window_length] || 60 #60 seconds
     end
 
     def perform(request)

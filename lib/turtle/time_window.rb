@@ -6,7 +6,7 @@ module Turtle
     
     def initialize(app, options = {})
       @app        = app
-      @store      = options[:store] || Turtle::Redis.new
+      @store      = Turtle::Redis.new
     end
 
     def call(env)
@@ -17,7 +17,7 @@ module Turtle
     end
 
     private
-    
+
     def build_success(remaining, reset, rack_result)
       status, header, body = *rack_result
       [ status, header.merge( limit_headers(remaining, reset) ) , body ]
