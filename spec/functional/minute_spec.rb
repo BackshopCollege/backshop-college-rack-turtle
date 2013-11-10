@@ -26,7 +26,7 @@ describe Turtle::Minute do
       now = Time.local(2013, 9, 1, 12, 0, 0)
       Timecop.freeze(now) do
         get "/endpoint"
-        expect(last_response.header["X-Limit-Window-Reset"]).to eql(60)
+        expect(last_response.header["X-Limit-Window-Reset"]).to eql(window)
       end
     end
 
@@ -76,6 +76,6 @@ describe Turtle::Minute do
         expect(last_response.header["X-Limit-Remaining"]).to eql(limit - (limit-2))
       end
 
-    end 
+    end
   end
 end

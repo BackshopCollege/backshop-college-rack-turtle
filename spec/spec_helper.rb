@@ -10,8 +10,12 @@ module UtilHelper
     5
   end
 
+  def window
+    120
+  end
+
   def app
-    Turtle::Minute.new(proc {|env| [200, {}, ["success"] ] } , :maximum => limit)
+    Turtle::Minute.new(proc {|env| [200, {}, ["success"] ] } , :maximum => limit, :window_length => window)
   end
 
   def with_ip(ip)
