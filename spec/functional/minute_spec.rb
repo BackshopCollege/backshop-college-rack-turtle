@@ -1,12 +1,5 @@
 require 'spec_helper'
 
-def limit
-  4
-end
-
-def app
-  Turtle::Minute.new(application, :maximum => limit)
-end
 
 describe Turtle::Minute do
 
@@ -15,7 +8,6 @@ describe Turtle::Minute do
   before(:each) do 
     store.flushdb
   end
-
 
   context "Remaining Header" do 
     

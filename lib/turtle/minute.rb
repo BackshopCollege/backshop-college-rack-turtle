@@ -7,6 +7,8 @@ module Turtle
     #
     # 10 requests / 60 seconds 
     #
+    attr_accessor :max_window_request, :window_length
+
     def initialize(app, options)
       super
       @max_window_request   = options[:maximum] || 10

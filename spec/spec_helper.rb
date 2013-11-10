@@ -4,11 +4,15 @@ require 'rack/test'
 require 'turtle'
 require 'timecop'
 
-def application
-  proc {|env| [200, {}, ["success"] ] }
-end
-
 module UtilHelper
+
+  def limit
+    5
+  end
+
+  def app
+    Turtle::Minute.new(proc {|env| [200, {}, ["success"] ] } , :maximum => limit)
+  end
 
   def with_ip(ip)
     ::Rack::Request.any_instance.stub(:ip).and_return(ip)
@@ -16,7 +20,7 @@ module UtilHelper
     ensure
     ::Rack::Request.any_instance.unstub(:ip)
   end
-  
+
 end
 
 RSpec.configure do |config|
