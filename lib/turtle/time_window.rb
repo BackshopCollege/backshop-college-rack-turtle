@@ -6,7 +6,6 @@ module Turtle
     
     def initialize(app, options = {})
       @app        = app
-      @store      = Turtle::Redis.new
     end
 
     def call(env)

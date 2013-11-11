@@ -1,5 +1,3 @@
-require 'pry'
-
 module Turtle
 
   class Minute < TimeWindow
@@ -7,12 +5,14 @@ module Turtle
     #
     # 10 requests / 60 seconds 
     #
-    attr_accessor :max_window_request, :window_length
+
+    attr_accessor :max_window_request, :window_length, :store
 
     def initialize(app, options)
       super
       @max_window_request   = options[:maximum] || 10
       @window_length        = options[:window_length] || 60 #60 seconds
+      @store                = Turtle::Redis.new
     end
 
     def perform(request)
